@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>clock</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    body {
+      position: relative;
+    }
+
+    #container {
+      width: 100%;
+      height: 100%;
+      background-image: url(./clock/outerspace.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: fixed;
+    }
+
+    #clock {
+      background-repeat: no-repeat;
+      background-size: cover;
+      ;
+      position: absolute;
+      top: 1px;
+      left: 50%;
+      transform: translateX(-50%);
+
+
+    }
+
+    #clock::after {
+      content: "";
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #333;
+      position: absolute;
+      left: 50%;
+      top: 43%;
+      transform: translateX(-50%);
+
+    }
+
+    #hour {
+      background: #333;
+      width: 10%;
+      height: 6px;
+      border-radius: 5px;
+      position: absolute;
+      /* calc 數學符號 前後要有空格 */
+      top: 45%;
+      left: calc(50% - 3px);
+      transform: rotate(0deg);
+      transform-origin: left center;
+
+    }
+
+    #minute {
+      background: #333;
+      width: 20%;
+      height: 6px;
+      border-radius: 5px;
+      position: absolute;
+      /* calc 數學符號 前後要有空格 */
+      top: 45%;
+      left: calc(50% - 3px);
+      transform: rotate(0deg);
+      transform-origin: left center;
+    }
+
+    #second {
+      background: url(./clock/snoopy-head.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 16%;
+      height: 14%;
+      position: absolute;
+      /* calc 數學符號 前後要有空格 */
+      top: -2%;
+      left: calc(50% - 50px);
+      transform: rotate(0deg);
+      transform-origin: 50% 275px;
+    }
+
+    #num_clock {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translateX(-50%);
+      color: black;
+      font: 2em Arial;
+      background: transparent;
+      margin: 5px;
+      padding: 5px;
+      border: 2px solid transparent;
+      border-radius: 10px;
+      width: 200px;
+      text-align: center;
+    }
+
+    .circle {
+      width: 370px;
+      height: 370px;
+      border-radius: 50%;
+      position: absolute;
+      background-color: transparent;
+      top: 7%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .circle:hover {
+      box-shadow: 0 0 100px 3px rgba(255, 229, 84, 0.9);
+      transition: 1s;
+    }
+
+    .snoopy {
+      position: absolute;
+      top: 40%;
+      left: 1%;
+    }
+
+    .animation0 {
+      animation-name: snoopy1;
+      animation-duration: 10s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+      animation-direction: alternate;
+      animation-fill-mode: forwards;
+    }
+
+    .animation0:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes snoopy1 {
+      0% {
+        top: 40%;
+        left: 1%;
+      }
+
+      50% {
+        top: 70%;
+        left: 40%;
+        transform: rotate(360deg);
+      }
+
+      100% {
+        top: 40%;
+        left: 80%;
+      }
+    }
+
+    .charlie {
+      position: absolute;
+      top: 10%;
+      left: 6%;
+      transform: rotate(15deg);
+    }
+
+    .animation1 {
+      animation-name: charlie1;
+      animation-duration: 8s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      animation-direction: normal;
+      animation-play-state: running;
+    }
+
+    @keyframes charlie1 {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .lucy {
+      position: absolute;
+      top: 65%;
+      left: 6%;
+      transform: rotate(-15deg);
+    }
+
+    .animation2 {
+      animation-name: lucy1;
+      animation-duration: 5s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      animation-direction: alternate;
+      /* animation-delay: 2s; */
+      animation-play-state: running;
+    }
+
+    @keyframes lucy1 {
+      to {
+        transform: translateX(50%);
+      }
+    }
+
+    .linus {
+      position: absolute;
+      right: 10%;
+      top: 10%;
+      transform: rotate(90deg);
+    }
+
+    .animation3 {
+      animation-name: linus1;
+      animation-duration: 5s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      animation-direction: alternate;
+      animation-play-state: running;
+    }
+
+    @keyframes linus1 {
+      from {
+        top: 5%;
+        left: 70%;
+      }
+
+      to {
+        top: 15%;
+        left: 70%;
+      }
+    }
+
+    .sally {
+      position: absolute;
+      bottom: 10%;
+      right: 10%;
+      transform: rotate(15deg);
+    }
+
+    .animation4 {
+      animation-name: sally1;
+      animation-duration: 5s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in;
+      animation-direction: alternate-reverse;
+      animation-play-state: running;
+    }
+
+    @keyframes sally1 {
+      to {
+        transform: translate(50%)
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <div id="clock"><img src="./clock/moon.png" style="width:100%">
+      <div id="hour"></div>
+      <div id="minute"></div>
+      <div id="second"></div>
+    </div>
+    <div id="num_clock"></div>
+    <div class="circle"></div>
+    <div class="snoopy animation0"><img src="./clock/snoopy.png" style="width:60%"></div>
+    <div class="charlie animation1"><img src="./clock/charlie.png" style="width:60%"></div>
+    <div class="lucy animation2"><img src="./clock/lucy.png" style="width:60%"></div>
+    <div class="linus animation3"><img src="./clock/linus.png" style="width:60%"></div>
+    <div class="sally animation4"><img src="./clock/sally.png" style="width:60%"></div>
+
+
+  </div>
+
+
+
+  <script>
+    // getMonth()	月份，從 0 開始
+    // getDay()	星期，從星期天 0 開始
+    const hour = document.getElementById('hour')
+    const minute = document.getElementById('minute')
+    const second = document.getElementById('second')
+
+    const updateClock = () => {
+      const now = new Date()
+      // -90  建立div時原本是水平的，但因為時鐘一開始0點是垂直的，所以要把它扣回來
+      hour.style.transform = `rotate(${30 * now.getHours() - 90}deg)`
+      minute.style.transform = `rotate(${6 * now.getMinutes() - 90}deg)`
+      second.style.transform = `rotate(${6 * now.getSeconds() - 90}deg)`
+    }
+    updateClock()
+    setInterval(updateClock, 1000)
+
+    const numclock = document.getElementById('num_clock')
+    const showTime = setInterval(() => {
+      const now = new Date()
+      const h = now.getHours()
+      const m = now.getMinutes()
+      const s = now.getSeconds()
+      numclock.innerText = h + ':' + m + ':' + s
+    }, 1000);
+
+
+
+  </script>
+</body>
+
+</html>
