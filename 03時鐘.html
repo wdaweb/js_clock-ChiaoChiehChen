@@ -15,6 +15,7 @@
 
     body {
       position: relative;
+      transition: .5s;
     }
 
     #container {
@@ -29,7 +30,6 @@
     #clock {
       background-repeat: no-repeat;
       background-size: cover;
-      ;
       position: absolute;
       top: 1px;
       left: 50%;
@@ -94,17 +94,14 @@
 
     #num_clock {
       position: absolute;
-      top: 40%;
+      top: 45%;
       left: 50%;
       transform: translateX(-50%);
-      color: black;
+      color: navy;
       font: 2em Arial;
       background: transparent;
-      margin: 5px;
-      padding: 5px;
-      border: 2px solid transparent;
-      border-radius: 10px;
-      width: 200px;
+      border: 1px solid transparent;
+      width: 150px;
       text-align: center;
     }
 
@@ -290,7 +287,7 @@
       // -90  建立div時原本是水平的，但因為時鐘一開始0點是垂直的，所以要把它扣回來
       hour.style.transform = `rotate(${30 * now.getHours() - 90}deg)`
       minute.style.transform = `rotate(${6 * now.getMinutes() - 90}deg)`
-      second.style.transform = `rotate(${6 * now.getSeconds() - 90}deg)`
+      second.style.transform = `rotate(${6 * now.getSeconds() - 0}deg)`
     }
     updateClock()
     setInterval(updateClock, 1000)
